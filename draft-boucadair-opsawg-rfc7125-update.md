@@ -94,17 +94,16 @@ informative:
 
    This document uses the terms defined in Section 2 of {{!RFC7011}}.
 
-#  An Update to tcpControlBits IP Flow Information Export (IPFIX)
-    Information Element
+#  An Update to tcpControlBits IP Flow Information Export (IPFIX) Information Element
 
    This document updates Section 3 of {{!RFC7125}} as follows:
 
 ~~~~
    OLD:
       The values of each bit are shown below, per the definition of the
-      bits in the TCP header [RFC0793][RFC3168] [RFC3540]:
+      bits in the TCP header [RFC0793][RFC3168][RFC3540]:
 
-             MSb                                                         LSb
+       MSb                                                         LSb
         0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15
       +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
       |               |           | N | C | E | U | A | P | R | S | F |
