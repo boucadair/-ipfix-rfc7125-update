@@ -12,9 +12,9 @@ v: 3
 area: "Operations and Management"
 workgroup: "OPSAWG"
 keyword:
- - xxxx
- - xxx
- - x
+ - IPFIX
+ - TCP
+ - Measurement
 
 author:
  -
