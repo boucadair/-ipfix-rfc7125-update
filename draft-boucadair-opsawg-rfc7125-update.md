@@ -15,6 +15,8 @@ keyword:
  - IPFIX
  - TCP
  - Measurement
+ - Export
+ - Observability
 
 author:
  -
