@@ -10,7 +10,7 @@ date:
 consensus: true
 v: 3
 area: "Operations and Management"
-workgroup: "OPSAWG"
+workgroup: "Operations and Management Area Working Group"
 keyword:
  - IPFIX
  - TCP
