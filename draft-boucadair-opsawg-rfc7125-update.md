@@ -1,6 +1,6 @@
 ---
 title: "An Update to the tcpControlBits IP Flow Information Export (IPFIX) Information Element"
-abbrev: "IPFIX TCP Flags"
+abbrev: "tcpControlBits IPFIX"
 category: std
 
 docname: draft-boucadair-opsawg-rfc7125-update-latest
@@ -22,7 +22,9 @@ author:
  -
     fullname: Mohamed Boucadair
     organization: Orange
-    role: editor
+    country: France
+    city: Rennes
+    code: 35000
     email: mohamed.boucadair@orange.com
 
 normative:
@@ -62,7 +64,7 @@ informative:
    {{!RFC9293}} fixed that by moving that registry to be listed as a
    subregistry under the "Transmission Control Protocol (TCP)
    Parameters" registry, adding bits that had previously been specified
-   in {{?RFC793}}, and removing the NS (Nonce Sum) bit as per [RFC8311].
+   in {{?RFC793}}, and removing the NS (Nonce Sum) bit as per {{?RFC8311}}.
    Also, {{!RFC9293}}  introduces "Bit Offset" to ease referencing each
    header flag's offset within the 16-bit aligned view of the TCP header
    (Section 3.1 of {{!RFC9293}}).  {{TCP-FLAGS}} is thus settled as the
@@ -163,14 +165,14 @@ informative:
 
 #  IANA Considerations
 
-   IANA is requested to update the "tcpControlBits" entry of the [{{IPFIX}}
+   IANA is requested to update the "tcpControlBits" entry of the {{IPFIX}}
    as follows:
 
    *  Update the description of to reflect the change in Section 3.
 
    *  Add {{TCP-FLAGS}} to the Additional Information field.
 
-   *  Add this document to the references
+   *  Add this document to the references.
 
 # Security Considerations
 
