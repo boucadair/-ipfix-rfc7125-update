@@ -1,0 +1,71 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2023-02-02T00:42:01.495037+00:00",
+  "repo": "boucadair/-ipfix-rfc7125-update",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    }
+  ],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOI4fQRc5dW9p_",
+      "title": "observability (T. Graf)",
+      "url": "https://github.com/boucadair/-ipfix-rfc7125-update/issues/1",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "> Dear opsawg,\r\n> \r\n> I support the adoption and think draft-boucla-opsawg-ipfix-fixes should follow the adoption call next as well. Both are very valuable to keep the IPFIX registry up to date.\r\n> \r\n> I agree with the author that IE6 tcpControlBits should mirror the TCP header flags registry (https://www.iana.org/assignments/tcp-parameters/tcp-parameters.xhtml#tcp-header-flags). \r\n> \r\n> With this update network operators understand when packets are being observed with bit 7 set which application in the network should be upgraded to reflect the change being introduced with RFC 8311.\r\n> \r\n> I suggest in the introduction to take the angle of correct observability vs. TCP protocol interoperability to describe the motivation.\r\n> \r\n> Best wishes\r\n> Thomas\r\n",
+      "createdAt": "2023-02-01T15:15:19Z",
+      "updatedAt": "2023-02-01T15:15:19Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
+  "pulls": []
+}
