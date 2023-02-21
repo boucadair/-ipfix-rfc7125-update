@@ -1,11 +1,11 @@
 # An Update to the tcpControlBits IP Flow Information Export (IPFIX) Information Element
 
-This is the working area for the individual Internet-Draft, "An Update to the tcpControlBits IP Flow Information Export (IPFIX) Information Element".
+This is the working area for the OPSAWG Internet-Draft, "An Update to the tcpControlBits IP Flow Information Export (IPFIX) Information Element".
 
-* [Editor's Copy](https://boucadair.github.io/-ipfix-rfc7125-update/#go.draft-boucadair-opsawg-rfc7125-update.html)
-* [Datatracker Page](https://datatracker.ietf.org/doc/draft-boucadair-opsawg-rfc7125-update)
-* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-boucadair-opsawg-rfc7125-update)
-* [Compare Editor's Copy to Individual Draft](https://boucadair.github.io/-ipfix-rfc7125-update/#go.draft-boucadair-opsawg-rfc7125-update.diff)
+* [Editor's Copy](https://boucadair.github.io/-ipfix-rfc7125-update/#go.draft-ietf-opsawg-rfc7125-update.html)
+* [Datatracker Page](https://datatracker.ietf.org/doc/draft-ietf-opsawg-rfc7125-update)
+* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-rfc7125-update)
+* [Compare Editor's Copy to Individual Draft](https://boucadair.github.io/-ipfix-rfc7125-update/#go.draft-ietf-opsawg-rfc7125-update.diff)
 
 
 ## Contributing
