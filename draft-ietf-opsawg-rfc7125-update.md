@@ -2,8 +2,9 @@
 title: "An Update to the tcpControlBits IP Flow Information Export (IPFIX) Information Element"
 abbrev: "tcpControlBits IPFIX"
 category: std
+updates: 7125
 
-docname: draft-boucadair-opsawg-rfc7125-update-latest
+docname: draft-ietf-opsawg-rfc7125-update-latest
 submissiontype: IETF
 number:
 date:
