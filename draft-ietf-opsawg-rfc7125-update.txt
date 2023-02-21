@@ -4,13 +4,14 @@
 
 OPSAWG                                                      M. Boucadair
 Internet-Draft                                                    Orange
-Intended status: Standards Track                         1 February 2023
-Expires: 5 August 2023
+Updates: 7125 (if approved)                             21 February 2023
+Intended status: Standards Track                                        
+Expires: 25 August 2023
 
 
    An Update to the tcpControlBits IP Flow Information Export (IPFIX)
                           Information Element
-              draft-boucadair-opsawg-rfc7125-update-latest
+                draft-ietf-opsawg-rfc7125-update-latest
 
 Abstract
 
@@ -51,7 +52,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 5 August 2023.
+   This Internet-Draft will expire on 25 August 2023.
 
 Copyright Notice
 
