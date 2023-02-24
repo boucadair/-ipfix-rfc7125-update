@@ -59,16 +59,16 @@ informative:
 #  Introduction
 
    TCP defines a set of control bits (also known as "flags") for
-   managing connections.  The "Transmission Control Protocol (TCP)
+   managing connections (Section 3.1 of {{!RFC9293}}). The "Transmission Control Protocol (TCP)
    Header Flags" registry was initially set by {{?RFC3168}}, but it was
    populated with only TCP control bits that were defined in {{?RFC3168}}.
    {{!RFC9293}} fixed that by moving that registry to be listed as a
    subregistry under the "Transmission Control Protocol (TCP)
    Parameters" registry, adding bits that had previously been specified
-   in {{?RFC793}}, and removing the NS (Nonce Sum) bit as per {{?RFC8311}}.
-   Also, {{!RFC9293}}  introduces "Bit Offset" to ease referencing each
+   in {{?RFC0793}}, and removing the NS (Nonce Sum) bit as per {{?RFC8311}}.
+   Also, Section 6 of {{!RFC9293}} introduces "Bit Offset" to ease referencing each
    header flag's offset within the 16-bit aligned view of the TCP header
-   (Section 3.1 of {{!RFC9293}}).  {{TCP-FLAGS}} is thus settled as the
+   (Figure 1 of {{!RFC9293}}).  {{TCP-FLAGS}} is thus settled as the
    authoritative reference for the assigned TCP control bits.
 
    {{!RFC7125}} revised the tcpControlBits IP Flow Information Export
@@ -77,17 +77,21 @@ informative:
    {{?RFC793}}.  However, that update is still problematic for
    interoperability because a value was deprecated since then (Section 7
    of {{?RFC8311}}) and, therefore, {{!RFC7125}} risks to deviate from the
-   authoritative TCP registry {{TCP-FLAGS}}.
+   authoritative TCP registry {{TCP-FLAGS}}. This update is also useful
+   to enhance observability. For example, network operators can identify
+   when packets are being observed with unassigned TCP flags set and,
+   therefore, identify which applications in the network should be upgraded
+   to reflect the changes to TCP flags that were introduced, e.g., in {{?RFC8311}}.
 
    This document fixes that problem by removing stale information from
    the IPFIX registry and avoiding future conflicts with the
-   authoritative TCP registry.
+   authoritative TCP registry {{IPFIX}}.
 
-   Also, because the setting of control bits may be misused in some
-   flows (e.g., DDoS attacks), an exporter has to report all observed
-   control bits even if no meaning is associated with a given TCP flag.
-   This document uses a stronger requirement language compared to
-   {{!RFC7125}}.  See Section 3 for more details.
+   Also, because the setting of TCP control bits may be misused in some
+   flows (e.g., Distributed Denial-of-Service (DDoS) attacks), an exporter
+   has to report all observed control bits even if no meaning is associated
+   with a given TCP flag. This document uses a stronger requirement language
+   compared to {{!RFC7125}}.  See Section 3 for more details.
 
 #  Terminology
 
@@ -155,7 +159,7 @@ informative:
       zero) of the TCP header [RFC9293] are used to encode the TCP data
       offset (header length), the corresponding bits in this Information
       Element MUST be exported with a value of zero and MUST be ignored
-      by the collector.  Use the tcpHeaderLength Information Element to
+      by the collector. Use the tcpHeaderLength Information Element to
       encode this value.
 
       All TCP control bits (including those unassigned) MUST be exported
