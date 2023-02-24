@@ -1062,7 +1062,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Boucadair</td>
-<td class="center">Expires 25 August 2023</td>
+<td class="center">Expires 28 August 2023</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1078,12 +1078,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="https://www.rfc-editor.org/rfc/rfc7125" class="eref">7125</a> (if approved)</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2023-02-21" class="published">21 February 2023</time>
+<time datetime="2023-02-24" class="published">24 February 2023</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2023-08-25">25 August 2023</time></dd>
+<dd class="expires"><time datetime="2023-08-28">28 August 2023</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1135,7 +1135,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 25 August 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 28 August 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1206,16 +1206,16 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
 <p id="section-1-1">TCP defines a set of control bits (also known as "flags") for
-   managing connections.  The "Transmission Control Protocol (TCP)
+   managing connections (Section 3.1 of <span>[<a href="#RFC9293" class="cite xref">RFC9293</a>]</span>). The "Transmission Control Protocol (TCP)
    Header Flags" registry was initially set by <span>[<a href="#RFC3168" class="cite xref">RFC3168</a>]</span>, but it was
    populated with only TCP control bits that were defined in <span>[<a href="#RFC3168" class="cite xref">RFC3168</a>]</span>.
    <span>[<a href="#RFC9293" class="cite xref">RFC9293</a>]</span> fixed that by moving that registry to be listed as a
    subregistry under the "Transmission Control Protocol (TCP)
    Parameters" registry, adding bits that had previously been specified
-   in <span>[<a href="#RFC793" class="cite xref">RFC793</a>]</span>, and removing the NS (Nonce Sum) bit as per <span>[<a href="#RFC8311" class="cite xref">RFC8311</a>]</span>.
-   Also, <span>[<a href="#RFC9293" class="cite xref">RFC9293</a>]</span>  introduces "Bit Offset" to ease referencing each
+   in <span>[<a href="#RFC0793" class="cite xref">RFC0793</a>]</span>, and removing the NS (Nonce Sum) bit as per <span>[<a href="#RFC8311" class="cite xref">RFC8311</a>]</span>.
+   Also, Section 6 of <span>[<a href="#RFC9293" class="cite xref">RFC9293</a>]</span> introduces "Bit Offset" to ease referencing each
    header flag's offset within the 16-bit aligned view of the TCP header
-   (Section 3.1 of <span>[<a href="#RFC9293" class="cite xref">RFC9293</a>]</span>).  <span>[<a href="#TCP-FLAGS" class="cite xref">TCP-FLAGS</a>]</span> is thus settled as the
+   (Figure 1 of <span>[<a href="#RFC9293" class="cite xref">RFC9293</a>]</span>).  <span>[<a href="#TCP-FLAGS" class="cite xref">TCP-FLAGS</a>]</span> is thus settled as the
    authoritative reference for the assigned TCP control bits.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2"><span>[<a href="#RFC7125" class="cite xref">RFC7125</a>]</span> revised the tcpControlBits IP Flow Information Export
    (IPFIX) Information Element (IE) that was originally defined in
@@ -1223,15 +1223,19 @@ svg :is([fill="white"], [fill^="#fff"]) {
    <span>[<a href="#RFC793" class="cite xref">RFC793</a>]</span>.  However, that update is still problematic for
    interoperability because a value was deprecated since then (Section 7
    of <span>[<a href="#RFC8311" class="cite xref">RFC8311</a>]</span>) and, therefore, <span>[<a href="#RFC7125" class="cite xref">RFC7125</a>]</span> risks to deviate from the
-   authoritative TCP registry <span>[<a href="#TCP-FLAGS" class="cite xref">TCP-FLAGS</a>]</span>.<a href="#section-1-2" class="pilcrow">¶</a></p>
+   authoritative TCP registry <span>[<a href="#TCP-FLAGS" class="cite xref">TCP-FLAGS</a>]</span>. This update is also useful
+   to enhance observability. For example, network operators can identify
+   when packets are being observed with unassigned TCP flags set and,
+   therefore, identify which applications in the network should be upgraded
+   to reflect the changes to TCP flags that were introduced, e.g., in <span>[<a href="#RFC8311" class="cite xref">RFC8311</a>]</span>.<a href="#section-1-2" class="pilcrow">¶</a></p>
 <p id="section-1-3">This document fixes that problem by removing stale information from
    the IPFIX registry and avoiding future conflicts with the
-   authoritative TCP registry.<a href="#section-1-3" class="pilcrow">¶</a></p>
-<p id="section-1-4">Also, because the setting of control bits may be misused in some
-   flows (e.g., DDoS attacks), an exporter has to report all observed
-   control bits even if no meaning is associated with a given TCP flag.
-   This document uses a stronger requirement language compared to
-   <span>[<a href="#RFC7125" class="cite xref">RFC7125</a>]</span>.  See Section 3 for more details.<a href="#section-1-4" class="pilcrow">¶</a></p>
+   authoritative TCP registry <span>[<a href="#IPFIX" class="cite xref">IPFIX</a>]</span>.<a href="#section-1-3" class="pilcrow">¶</a></p>
+<p id="section-1-4">Also, because the setting of TCP control bits may be misused in some
+   flows (e.g., Distributed Denial-of-Service (DDoS) attacks), an exporter
+   has to report all observed control bits even if no meaning is associated
+   with a given TCP flag. This document uses a stronger requirement language
+   compared to <span>[<a href="#RFC7125" class="cite xref">RFC7125</a>]</span>.  See Section 3 for more details.<a href="#section-1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="terminology">
@@ -1310,7 +1314,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
       zero) of the TCP header [RFC9293] are used to encode the TCP data
       offset (header length), the corresponding bits in this Information
       Element MUST be exported with a value of zero and MUST be ignored
-      by the collector.  Use the tcpHeaderLength Information Element to
+      by the collector. Use the tcpHeaderLength Information Element to
       encode this value.
 
       All TCP control bits (including those unassigned) MUST be exported
@@ -1392,6 +1396,10 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <dt id="IPFIX">[IPFIX]</dt>
         <dd>
 <span class="refAuthor">IANA</span>, <span class="refTitle">"IP Flow Information Export (IPFIX) Entities"</span>, <span>n.d.</span>, <span>&lt;<a href="&lt;https://www.iana.org/assignments/ipfix/ipfix.xhtml">&lt;https://www.iana.org/assignments/ipfix/ipfix.xhtml</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC0793">[RFC0793]</dt>
+        <dd>
+<span class="refAuthor">Postel, J.</span>, <span class="refTitle">"Transmission Control Protocol"</span>, <span class="seriesInfo">RFC 793</span>, <span class="seriesInfo">DOI 10.17487/RFC0793</span>, <time datetime="1981-09" class="refDate">September 1981</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc793">https://www.rfc-editor.org/rfc/rfc793</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC3168">[RFC3168]</dt>
         <dd>
