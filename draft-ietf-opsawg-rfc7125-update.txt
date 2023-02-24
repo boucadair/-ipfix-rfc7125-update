@@ -101,7 +101,7 @@ Table of Contents
    [RFC7125] revised the tcpControlBits IP Flow Information Export
    (IPFIX) Information Element (IE) that was originally defined in
    [RFC5102] to reflect changes to the TCP Flags header field since
-   [RFC793].  However, that update is still problematic for
+   [RFC0793].  However, that update is still problematic for
    interoperability because a value was deprecated since then (Section 7
    of [RFC8311]) and, therefore, [RFC7125] risks to deviate from the
    authoritative TCP registry [TCP-FLAGS].  This update is also useful
@@ -272,10 +272,6 @@ Table of Contents
               RFC 5102, DOI 10.17487/RFC5102, January 2008,
               <https://www.rfc-editor.org/rfc/rfc5102>.
 
-   [RFC793]   Postel, J., "Transmission Control Protocol", RFC 793,
-              DOI 10.17487/RFC0793, September 1981,
-              <https://www.rfc-editor.org/rfc/rfc793>.
-
    [RFC8311]  Black, D., "Relaxing Restrictions on Explicit Congestion
               Notification (ECN) Experimentation", RFC 8311,
               DOI 10.17487/RFC8311, January 2018,
@@ -283,8 +279,8 @@ Table of Contents
 
 Acknowledgments
 
-   This document was triggered by a discussion in opswag with the
-   authors of [I-D.ietf-opsawg-ipfix-srv6-srh].
+   This document was triggered by a discussion of the author in opsawg
+   with the authors of [I-D.ietf-opsawg-ipfix-srv6-srh].
 
    Thanks to Christian Jacquenet, Thomas Graf, and Benoît Claise for the
    review and comments.

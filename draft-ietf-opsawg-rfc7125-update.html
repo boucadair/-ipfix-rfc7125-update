@@ -1220,7 +1220,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <p id="section-1-2"><span>[<a href="#RFC7125" class="cite xref">RFC7125</a>]</span> revised the tcpControlBits IP Flow Information Export
    (IPFIX) Information Element (IE) that was originally defined in
    <span>[<a href="#RFC5102" class="cite xref">RFC5102</a>]</span> to reflect changes to the TCP Flags header field since
-   <span>[<a href="#RFC793" class="cite xref">RFC793</a>]</span>.  However, that update is still problematic for
+   <span>[<a href="#RFC0793" class="cite xref">RFC0793</a>]</span>.  However, that update is still problematic for
    interoperability because a value was deprecated since then (Section 7
    of <span>[<a href="#RFC8311" class="cite xref">RFC8311</a>]</span>) and, therefore, <span>[<a href="#RFC7125" class="cite xref">RFC7125</a>]</span> risks to deviate from the
    authoritative TCP registry <span>[<a href="#TCP-FLAGS" class="cite xref">TCP-FLAGS</a>]</span>. This update is also useful
@@ -1258,67 +1258,67 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <p id="section-3-1">This document updates Section 3 of <span>[<a href="#RFC7125" class="cite xref">RFC7125</a>]</span> as follows:<a href="#section-3-1" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-3-2">
 <pre>
-   OLD:
-      The values of each bit are shown below, per the definition of the
-      bits in the TCP header [RFC0793][RFC3168][RFC3540]:
+OLD:
+   The values of each bit are shown below, per the definition of the
+   bits in the TCP header [RFC0793][RFC3168][RFC3540]:
 
-       MSb                                                         LSb
-        0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15
-      +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
-      |               |           | N | C | E | U | A | P | R | S | F |
-      |     Zero      |   Future  | S | W | C | R | C | S | S | Y | I |
-      | (Data Offset) |    Use    |   | R | E | G | K | H | T | N | N |
-      +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
+    MSb                                                         LSb
+     0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15
+   +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
+   |               |           | N | C | E | U | A | P | R | S | F |
+   |     Zero      |   Future  | S | W | C | R | C | S | S | Y | I |
+   | (Data Offset) |    Use    |   | R | E | G | K | H | T | N | N |
+   +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
 
-      bit    flag
-      value  name  description
-      ------+-----+-------------------------------------
-      0x8000       Zero (see tcpHeaderLength)
-      0x4000       Zero (see tcpHeaderLength)
-      0x2000       Zero (see tcpHeaderLength)
-      0x1000       Zero (see tcpHeaderLength)
-      0x0800       Future Use
-      0x0400       Future Use
-      0x0200       Future Use
-      0x0100   NS  ECN Nonce Sum
-      0x0080  CWR  Congestion Window Reduced
-      0x0040  ECE  ECN Echo
-      0x0020  URG  Urgent Pointer field significant
-      0x0010  ACK  Acknowledgment field significant
-      0x0008  PSH  Push Function
-      0x0004  RST  Reset the connection
-      0x0002  SYN  Synchronize sequence numbers
-      0x0001  FIN  No more data from sender
+   bit    flag
+   value  name  description
+   ------+-----+-------------------------------------
+   0x8000       Zero (see tcpHeaderLength)
+   0x4000       Zero (see tcpHeaderLength)
+   0x2000       Zero (see tcpHeaderLength)
+   0x1000       Zero (see tcpHeaderLength)
+   0x0800       Future Use
+   0x0400       Future Use
+   0x0200       Future Use
+   0x0100   NS  ECN Nonce Sum
+   0x0080  CWR  Congestion Window Reduced
+   0x0040  ECE  ECN Echo
+   0x0020  URG  Urgent Pointer field significant
+   0x0010  ACK  Acknowledgment field significant
+   0x0008  PSH  Push Function
+   0x0004  RST  Reset the connection
+   0x0002  SYN  Synchronize sequence numbers
+   0x0001  FIN  No more data from sender
 
-      As the most significant 4 bits of octets 12 and 13 (counting from
-      zero) of the TCP header [RFC0793] are used to encode the TCP data
-      offset (header length), the corresponding bits in this Information
-      Element MUST be exported as zero and MUST be ignored by the
-      collector.  Use the tcpHeaderLength Information Element to encode
-      this value.
+   As the most significant 4 bits of octets 12 and 13 (counting from
+   zero) of the TCP header [RFC0793] are used to encode the TCP data
+   offset (header length), the corresponding bits in this Information
+   Element MUST be exported as zero and MUST be ignored by the
+   collector.  Use the tcpHeaderLength Information Element to encode
+   this value.
 
-      Each of the 3 bits (0x800, 0x400, and 0x200), which are reserved
-      for future use in [RFC0793], SHOULD be exported as observed in the
-      TCP headers of the packets of this Flow.
+   Each of the 3 bits (0x800, 0x400, and 0x200), which are reserved
+   for future use in [RFC0793], SHOULD be exported as observed in the
+   TCP headers of the packets of this Flow.
 </pre><a href="#section-3-2" class="pilcrow">¶</a>
 </div>
 <div class="alignLeft art-text artwork" id="section-3-3">
 <pre>
-   NEW:
-      As per [RFC9293], the assignment of the TCP control bits is
-      managed by IANA from the "TCP Header Flags" registry [TCP-FLAGS].
-      That registry is authoritative to retrieve the most recent TCP
-      control bits.
+NEW:
+   As per [RFC9293], the assignment of the TCP control bits is
+   managed by IANA from the "TCP Header Flags" registry [TCP-FLAGS].
+   That registry is authoritative to retrieve the most recent TCP
+   control bits.
 
-      As the most significant 4 bits of octets 12 and 13 (counting from
-      zero) of the TCP header [RFC9293] are used to encode the TCP data
-      offset (header length), the corresponding bits in this Information
-      Element MUST be exported with a value of zero and MUST be ignored
-      by the collector. Use the tcpHeaderLength Information Element to
-      encode this value.
+   As the most significant 4 bits of octets 12 and 13 (counting from
+   zero) of the TCP header [RFC9293] are used to encode the TCP data
+   offset (header length), the corresponding bits in this Information
+   Element MUST be exported with a value of zero and MUST be ignored
+   by the collector. Use the tcpHeaderLength Information Element to
+   encode this value.
 
-      All TCP control bits (including those unassigned) MUST be exported
-      as observed in the TCP headers of the packets of this Flow.
+   All TCP control bits (including those unassigned) MUST be exported
+   as observed in the TCP headers of the packets of this Flow.
 </pre><a href="#section-3-3" class="pilcrow">¶</a>
 </div>
 </section>
@@ -1409,10 +1409,6 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
         <dd>
 <span class="refAuthor">Quittek, J.</span>, <span class="refAuthor">Bryant, S.</span>, <span class="refAuthor">Claise, B.</span>, <span class="refAuthor">Aitken, P.</span>, and <span class="refAuthor">J. Meyer</span>, <span class="refTitle">"Information Model for IP Flow Information Export"</span>, <span class="seriesInfo">RFC 5102</span>, <span class="seriesInfo">DOI 10.17487/RFC5102</span>, <time datetime="2008-01" class="refDate">January 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5102">https://www.rfc-editor.org/rfc/rfc5102</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="RFC793">[RFC793]</dt>
-        <dd>
-<span class="refAuthor">Postel, J.</span>, <span class="refTitle">"Transmission Control Protocol"</span>, <span class="seriesInfo">RFC 793</span>, <span class="seriesInfo">DOI 10.17487/RFC0793</span>, <time datetime="1981-09" class="refDate">September 1981</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc793">https://www.rfc-editor.org/rfc/rfc793</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="RFC8311">[RFC8311]</dt>
       <dd>
 <span class="refAuthor">Black, D.</span>, <span class="refTitle">"Relaxing Restrictions on Explicit Congestion Notification (ECN) Experimentation"</span>, <span class="seriesInfo">RFC 8311</span>, <span class="seriesInfo">DOI 10.17487/RFC8311</span>, <time datetime="2018-01" class="refDate">January 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8311">https://www.rfc-editor.org/rfc/rfc8311</a>&gt;</span>. </dd>
@@ -1425,7 +1421,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
       <h2 id="name-acknowledgments">
 <a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
       </h2>
-<p id="appendix-A-1">This document was triggered by a discussion in opswag with the
+<p id="appendix-A-1">This document was triggered by a discussion of the author in opsawg with the
    authors of <span>[<a href="#I-D.ietf-opsawg-ipfix-srv6-srh" class="cite xref">I-D.ietf-opsawg-ipfix-srv6-srh</a>]</span>.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
 <p id="appendix-A-2">Thanks to Christian Jacquenet, Thomas Graf, and Benoît Claise for the
    review and comments.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
