@@ -74,7 +74,7 @@ informative:
    {{!RFC7125}} revised the tcpControlBits IP Flow Information Export
    (IPFIX) Information Element (IE) that was originally defined in
    {{?RFC5102}} to reflect changes to the TCP Flags header field since
-   {{?RFC793}}.  However, that update is still problematic for
+   {{?RFC0793}}.  However, that update is still problematic for
    interoperability because a value was deprecated since then (Section 7
    of {{?RFC8311}}) and, therefore, {{!RFC7125}} risks to deviate from the
    authoritative TCP registry {{TCP-FLAGS}}. This update is also useful
@@ -104,66 +104,66 @@ informative:
    This document updates Section 3 of {{!RFC7125}} as follows:
 
 ~~~~
-   OLD:
-      The values of each bit are shown below, per the definition of the
-      bits in the TCP header [RFC0793][RFC3168][RFC3540]:
+OLD:
+   The values of each bit are shown below, per the definition of the
+   bits in the TCP header [RFC0793][RFC3168][RFC3540]:
 
-       MSb                                                         LSb
-        0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15
-      +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
-      |               |           | N | C | E | U | A | P | R | S | F |
-      |     Zero      |   Future  | S | W | C | R | C | S | S | Y | I |
-      | (Data Offset) |    Use    |   | R | E | G | K | H | T | N | N |
-      +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
+    MSb                                                         LSb
+     0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15
+   +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
+   |               |           | N | C | E | U | A | P | R | S | F |
+   |     Zero      |   Future  | S | W | C | R | C | S | S | Y | I |
+   | (Data Offset) |    Use    |   | R | E | G | K | H | T | N | N |
+   +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
 
-      bit    flag
-      value  name  description
-      ------+-----+-------------------------------------
-      0x8000       Zero (see tcpHeaderLength)
-      0x4000       Zero (see tcpHeaderLength)
-      0x2000       Zero (see tcpHeaderLength)
-      0x1000       Zero (see tcpHeaderLength)
-      0x0800       Future Use
-      0x0400       Future Use
-      0x0200       Future Use
-      0x0100   NS  ECN Nonce Sum
-      0x0080  CWR  Congestion Window Reduced
-      0x0040  ECE  ECN Echo
-      0x0020  URG  Urgent Pointer field significant
-      0x0010  ACK  Acknowledgment field significant
-      0x0008  PSH  Push Function
-      0x0004  RST  Reset the connection
-      0x0002  SYN  Synchronize sequence numbers
-      0x0001  FIN  No more data from sender
+   bit    flag
+   value  name  description
+   ------+-----+-------------------------------------
+   0x8000       Zero (see tcpHeaderLength)
+   0x4000       Zero (see tcpHeaderLength)
+   0x2000       Zero (see tcpHeaderLength)
+   0x1000       Zero (see tcpHeaderLength)
+   0x0800       Future Use
+   0x0400       Future Use
+   0x0200       Future Use
+   0x0100   NS  ECN Nonce Sum
+   0x0080  CWR  Congestion Window Reduced
+   0x0040  ECE  ECN Echo
+   0x0020  URG  Urgent Pointer field significant
+   0x0010  ACK  Acknowledgment field significant
+   0x0008  PSH  Push Function
+   0x0004  RST  Reset the connection
+   0x0002  SYN  Synchronize sequence numbers
+   0x0001  FIN  No more data from sender
 
-      As the most significant 4 bits of octets 12 and 13 (counting from
-      zero) of the TCP header [RFC0793] are used to encode the TCP data
-      offset (header length), the corresponding bits in this Information
-      Element MUST be exported as zero and MUST be ignored by the
-      collector.  Use the tcpHeaderLength Information Element to encode
-      this value.
+   As the most significant 4 bits of octets 12 and 13 (counting from
+   zero) of the TCP header [RFC0793] are used to encode the TCP data
+   offset (header length), the corresponding bits in this Information
+   Element MUST be exported as zero and MUST be ignored by the
+   collector.  Use the tcpHeaderLength Information Element to encode
+   this value.
 
-      Each of the 3 bits (0x800, 0x400, and 0x200), which are reserved
-      for future use in [RFC0793], SHOULD be exported as observed in the
-      TCP headers of the packets of this Flow.
+   Each of the 3 bits (0x800, 0x400, and 0x200), which are reserved
+   for future use in [RFC0793], SHOULD be exported as observed in the
+   TCP headers of the packets of this Flow.
 ~~~~
 
 ~~~~
-   NEW:
-      As per [RFC9293], the assignment of the TCP control bits is
-      managed by IANA from the "TCP Header Flags" registry [TCP-FLAGS].
-      That registry is authoritative to retrieve the most recent TCP
-      control bits.
+NEW:
+   As per [RFC9293], the assignment of the TCP control bits is
+   managed by IANA from the "TCP Header Flags" registry [TCP-FLAGS].
+   That registry is authoritative to retrieve the most recent TCP
+   control bits.
 
-      As the most significant 4 bits of octets 12 and 13 (counting from
-      zero) of the TCP header [RFC9293] are used to encode the TCP data
-      offset (header length), the corresponding bits in this Information
-      Element MUST be exported with a value of zero and MUST be ignored
-      by the collector. Use the tcpHeaderLength Information Element to
-      encode this value.
+   As the most significant 4 bits of octets 12 and 13 (counting from
+   zero) of the TCP header [RFC9293] are used to encode the TCP data
+   offset (header length), the corresponding bits in this Information
+   Element MUST be exported with a value of zero and MUST be ignored
+   by the collector. Use the tcpHeaderLength Information Element to
+   encode this value.
 
-      All TCP control bits (including those unassigned) MUST be exported
-      as observed in the TCP headers of the packets of this Flow.
+   All TCP control bits (including those unassigned) MUST be exported
+   as observed in the TCP headers of the packets of this Flow.
 ~~~~
 
 
@@ -188,7 +188,7 @@ informative:
 # Acknowledgments
 {:numbered="false"}
 
-   This document was triggered by a discussion in opswag with the
+   This document was triggered by a discussion of the author in opsawg with the
    authors of {{?I-D.ietf-opsawg-ipfix-srv6-srh}}.
 
    Thanks to Christian Jacquenet, Thomas Graf, and Benoît Claise for the
