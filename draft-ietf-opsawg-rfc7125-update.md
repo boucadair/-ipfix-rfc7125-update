@@ -2,7 +2,7 @@
 title: "An Update to the tcpControlBits IP Flow Information Export (IPFIX) Information Element"
 abbrev: "tcpControlBits IPFIX"
 category: std
-updates: 7125
+obsoletes: 7125
 
 docname: draft-ietf-opsawg-rfc7125-update-latest
 submissiontype: IETF
@@ -51,9 +51,11 @@ informative:
    However, that update is still problematic for interoperability
    because some flag values were deprecated since then.
 
-   This document updates RFC 7125 by removing stale information from the
+   This document removes stale information from the
    IPFIX registry and avoiding future conflicts with the authoritative
    TCP Header Flags registry.
+
+   This document obsoletes RFC 7125.
 
 --- middle
 
@@ -72,12 +74,12 @@ informative:
    (Figure 1 of {{!RFC9293}}).  {{TCP-FLAGS}} is thus settled as the
    authoritative reference for the assigned TCP control bits.
 
-   {{!RFC7125}} revised the tcpControlBits IP Flow Information Export
+   {{?RFC7125}} revised the tcpControlBits IP Flow Information Export
    (IPFIX) Information Element (IE) that was originally defined in
    {{?RFC5102}} to reflect changes to the TCP Flags header field since
    {{?RFC0793}}.  However, that update is still problematic for
    interoperability because a value was deprecated since then (Section 7
-   of {{?RFC8311}}) and, therefore, {{!RFC7125}} risks to deviate from the
+   of {{?RFC8311}}) and, therefore, {{?RFC7125}} risks to deviate from the
    authoritative TCP registry {{TCP-FLAGS}}. This update is also useful
    to enhance observability. For example, network operators can identify
    when packets are being observed with unassigned TCP flags set and,
@@ -92,7 +94,7 @@ informative:
    flows (e.g., Distributed Denial-of-Service (DDoS) attacks), an exporter
    has to report all observed control bits even if no meaning is associated
    with a given TCP flag. This document uses a stronger requirement language
-   compared to {{!RFC7125}}.  See Section 3 for more details.
+   compared to {{?RFC7125}}.  See Section 3 for more details.
 
 #  Terminology
 
@@ -100,72 +102,68 @@ informative:
 
    This document uses the terms defined in Section 2 of {{!RFC7011}}.
 
-#  An Update to tcpControlBits IP Flow Information Export (IPFIX) Information Element
+#  The tcpControlBits Information Element
 
-   This document updates Section 3 of {{!RFC7125}} as follows:
+ElementId:
+: 6
 
-~~~~
-OLD:
-   The values of each bit are shown below, per the definition of the
-   bits in the TCP header [RFC0793][RFC3168][RFC3540]:
+Data Type:
+: unsigned16
 
-    MSb                                                         LSb
-     0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15
-   +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
-   |               |           | N | C | E | U | A | P | R | S | F |
-   |     Zero      |   Future  | S | W | C | R | C | S | S | Y | I |
-   | (Data Offset) |    Use    |   | R | E | G | K | H | T | N | N |
-   +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+
+Data Type Semantics:
+: flags
 
-   bit    flag
-   value  name  description
-   ------+-----+-------------------------------------
-   0x8000       Zero (see tcpHeaderLength)
-   0x4000       Zero (see tcpHeaderLength)
-   0x2000       Zero (see tcpHeaderLength)
-   0x1000       Zero (see tcpHeaderLength)
-   0x0800       Future Use
-   0x0400       Future Use
-   0x0200       Future Use
-   0x0100   NS  ECN Nonce Sum
-   0x0080  CWR  Congestion Window Reduced
-   0x0040  ECE  ECN Echo
-   0x0020  URG  Urgent Pointer field significant
-   0x0010  ACK  Acknowledgment field significant
-   0x0008  PSH  Push Function
-   0x0004  RST  Reset the connection
-   0x0002  SYN  Synchronize sequence numbers
-   0x0001  FIN  No more data from sender
+Description:
+: TCP control bits observed for the packets of this Flow.
+  This information is encoded as a bit field; for each TCP control
+  bit, there is a bit in this set.  The bit is set to 1 if any
+  observed packet of this Flow has the corresponding TCP control bit
+  set to 1.  The bit is cleared to 0 otherwise.
+     
+: As per {{!RFC9293}}, the assignment of the TCP control bits is
+  managed by IANA from the "TCP Header Flags" registry {{TCP-FLAGS}}.
+  That registry is authoritative to retrieve the most recent TCP
+  control bits.
 
-   As the most significant 4 bits of octets 12 and 13 (counting from
-   zero) of the TCP header [RFC0793] are used to encode the TCP data
-   offset (header length), the corresponding bits in this Information
-   Element MUST be exported as zero and MUST be ignored by the
-   collector.  Use the tcpHeaderLength Information Element to encode
-   this value.
+: As the most significant 4 bits of octets 12 and 13 (counting from
+  zero) of the TCP header {{!RFC9293}} are used to encode the TCP data
+  offset (header length), the corresponding bits in this Information
+  Element MUST be exported with a value of zero and MUST be ignored
+  by the collector. Use the tcpHeaderLength Information Element to
+  encode this value.
 
-   Each of the 3 bits (0x800, 0x400, and 0x200), which are reserved
-   for future use in [RFC0793], SHOULD be exported as observed in the
-   TCP headers of the packets of this Flow.
-~~~~
+: All TCP control bits (including those unassigned) MUST be exported
+  as observed in the TCP headers of the packets of this Flow.
 
-~~~~
-NEW:
-   As per [RFC9293], the assignment of the TCP control bits is
-   managed by IANA from the "TCP Header Flags" registry [TCP-FLAGS].
-   That registry is authoritative to retrieve the most recent TCP
-   control bits.
+: If exported as a single octet with reduced-size encoding, this
+  Information Element covers the low-order octet of this field (i.e.,
+  bit offset positions 8 to 15) {{TCP-FLAGS}}. A collector receiving this Information Element
+  with reduced-size encoding must not assume anything about the
+  content of the four bits with bit offset positions 4 to 7.
 
-   As the most significant 4 bits of octets 12 and 13 (counting from
-   zero) of the TCP header [RFC9293] are used to encode the TCP data
-   offset (header length), the corresponding bits in this Information
-   Element MUST be exported with a value of zero and MUST be ignored
-   by the collector. Use the tcpHeaderLength Information Element to
-   encode this value.
+: Exporting Processes exporting this Information Element on behalf
+  of a Metering Process that is not capable of observing any of the
+  flags with bit offset positions 4 to 7 SHOULD use reduced-size encoding,
+  and only export the least significant 8 bits of this Information
+  Element.
 
-   All TCP control bits (including those unassigned) MUST be exported
-   as observed in the TCP headers of the packets of this Flow.
-~~~~
+: Note that previous revisions of this Information Element's
+  definition specified that that flags with bit offset positions 8 and 9 must be exported as
+  zero, even if observed.  Collectors should therefore not assume
+  that a value of zero for these bits in this Information Element
+  indicates the bits were never set in the observed traffic,
+  especially if these bits are zero in every Flow Record sent by a
+  given exporter.
+
+Units:
+
+Range:
+
+References:
+: {{!RFC9293}}[This-Document]
+
+Revision:
+: 2
 
 
 #  IANA Considerations
@@ -181,8 +179,7 @@ NEW:
 
 # Security Considerations
 
-   This document does not add any new security considerations to those
-   already discussed in Section 5 of {{!RFC7125}}.
+  This document does not add new security considerations to those already discussed for IPFIX in {{!RFC7011}}.
 
 --- back
 
@@ -194,3 +191,20 @@ NEW:
 
    Thanks to Christian Jacquenet, Thomas Graf, and Benoît Claise for the
    review and comments.
+
+## Acknowledgments from RFC 7125
+
+   Thanks to Andrew Feren, Lothar Braun, Michael Scharf, and Simon
+   Josefsson for comments on the revised definition.  This work is
+   partially supported by the European Commission under grant agreement
+   FP7-ICT-318627 mPlane; this does not imply endorsement by the
+   Commission.
+
+# Contributors
+{:numbered="false"}
+
+The authors of {{?RFC7125}} are as follows:
+
+* Brian Trammell
+* Paul Aitken
+
