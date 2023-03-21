@@ -170,11 +170,13 @@ Revision:
    IANA is requested to update the "tcpControlBits" entry of the {{IPFIX}}
    as follows:
 
-   *  Update the description of to reflect the change in Section 3.
+   * Update the description of to reflect the change in Section 3.
 
-   *  Add {{TCP-FLAGS}} to the Additional Information field.
+   * Add {{TCP-FLAGS}} to the Additional Information field.
 
-   *  Add this document to the references.
+   * Set the revision to 2 and the revision date to the date of publication of this document.
+
+   * Add this document to the references.
 
 # Security Considerations
 
