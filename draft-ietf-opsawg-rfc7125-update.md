@@ -41,7 +41,6 @@ informative:
     author:
       org: IANA
     target: <https://www.iana.org/assignments/ipfix/ipfix.xhtml
-  RFC3540:
 
 --- abstract
 
@@ -192,13 +191,12 @@ Revision:
    Thanks to Christian Jacquenet, Thomas Graf, and Benoît Claise for the
    review and comments.
 
-## Acknowledgments from RFC 7125
-
-   Thanks to Andrew Feren, Lothar Braun, Michael Scharf, and Simon
-   Josefsson for comments on the revised definition.  This work is
-   partially supported by the European Commission under grant agreement
-   FP7-ICT-318627 mPlane; this does not imply endorsement by the
-   Commission.
+  From {{?RFC7125}}:
+  : Thanks to Andrew Feren, Lothar Braun, Michael Scharf, and Simon
+     Josefsson for comments on the revised definition.  This work is
+     partially supported by the European Commission under grant agreement
+     FP7-ICT-318627 mPlane; this does not imply endorsement by the
+     Commission.
 
 # Contributors
 {:numbered="false"}
