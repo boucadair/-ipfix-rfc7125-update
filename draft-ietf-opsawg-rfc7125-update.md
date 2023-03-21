@@ -184,6 +184,17 @@ Revision:
 
 --- back
 
+# Changes from RFC 7125
+
+* Clean-up the description by removing mentions of stale flag bits, referring to the flag bits by their bit offset position, and relying upon the IANA TCP registry.
+* Remove the table of TCP flag bits from the description of the tcpControlBits Information Element.
+* Add {{TCP-FLAGS}} to the Additional Information field of the tcpControlBits Information Element.
+* Use strong normative language for exporting observed flags.
+* Update the references of the tcpControlBits Information Element.
+* Bump the revision of the tcpControlBits Information Element.
+* Replace obsolete RFCs (e.g., RFC793).
+
+
 # Acknowledgments
 {:numbered="false"}
 
