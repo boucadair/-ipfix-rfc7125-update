@@ -119,7 +119,7 @@ Description:
   bit, there is a bit in this set.  The bit is set to 1 if any
   observed packet of this Flow has the corresponding TCP control bit
   set to 1.  The bit is cleared to 0 otherwise.
-     
+
 : As per {{!RFC9293}}, the assignment of the TCP control bits is
   managed by IANA from the "TCP Header Flags" registry {{TCP-FLAGS}}.
   That registry is authoritative to retrieve the most recent TCP
