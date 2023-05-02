@@ -86,8 +86,8 @@ informative:
    to reflect the changes to TCP flags that were introduced, e.g., in {{?RFC8311}}.
 
    This document fixes that problem by removing stale information from
-   the IPFIX registry and avoiding future conflicts with the
-   authoritative TCP registry {{IPFIX}}.
+   the IPFIX registry {{IPFIX}} and avoiding future conflicts with the
+   authoritative TCP registry {{TCP-FLAGS}}.
 
    Also, because the setting of TCP control bits may be misused in some
    flows (e.g., Distributed Denial-of-Service (DDoS) attacks), an exporter
@@ -161,6 +161,9 @@ Range:
 References:
 : {{!RFC9293}}[This-Document]
 
+: Additional Information:
+See the assigned TCP control bits in {{TCP-FLAGS}}.
+
 Revision:
 : 2
 
@@ -168,15 +171,7 @@ Revision:
 #  IANA Considerations
 
    IANA is requested to update the "tcpControlBits" entry of the {{IPFIX}}
-   as follows:
-
-   * Update the description of to reflect the change in Section 3.
-
-   * Add {{TCP-FLAGS}} to the Additional Information field.
-
-   * Set the revision to 2 and the revision date to the date of publication of this document.
-
-   * Add this document to the references.
+   to echo the details provided in Section 3.
 
 # Security Considerations
 
@@ -204,7 +199,7 @@ Revision:
    Thanks to Christian Jacquenet, Thomas Graf, and Benoît Claise for the
    review and comments.
 
-   Thanks to Michael Scharf for the tsvart review.
+   Thanks to Michael Scharf for the tsvart review and Ketan Talaulikar for the rtgdir review.
 
   From {{?RFC7125}}:
   : Thanks to Andrew Feren, Lothar Braun, Michael Scharf, and Simon
