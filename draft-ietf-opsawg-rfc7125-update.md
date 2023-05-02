@@ -204,6 +204,8 @@ Revision:
    Thanks to Christian Jacquenet, Thomas Graf, and Benoît Claise for the
    review and comments.
 
+   Thanks to Michael Scharf for the tsvart review.
+
   From {{?RFC7125}}:
   : Thanks to Andrew Feren, Lothar Braun, Michael Scharf, and Simon
      Josefsson for comments on the revised definition.  This work is
