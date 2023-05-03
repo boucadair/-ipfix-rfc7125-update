@@ -89,12 +89,6 @@ informative:
    therefore, identify which applications in the network should be upgraded
    to reflect the changes to TCP flags that were introduced, e.g., in {{?RFC8311}}.
 
-   Also, because the setting of TCP control bits may be misused in some
-   flows (e.g., Distributed Denial-of-Service (DDoS) attacks), an exporter
-   has to report all observed control bits even if no meaning is associated
-   with a given TCP flag. This document uses a stronger requirement language
-   compared to {{?RFC7125}}.  See Section 3 for more details.
-
    The main changes to {{?RFC7125}} are listed in {{changes}}.
 
 #  Terminology
@@ -177,10 +171,14 @@ Revision:
 
 # Security Considerations
 
-An exporter has to report all observed control bits even if no meaning is associated
-with a given TCP flag. Misuses of TCP flags to conduct attacks can be detected by observers.
+   Because the setting of TCP control bits may be misused in some
+   flows (e.g., Distributed Denial-of-Service (DDoS) attacks), an exporter
+   has to report all observed control bits even if no meaning is associated
+   with a given TCP flag. This document uses a stronger requirement language
+   compared to {{?RFC7125}}.
 
-This document does not add new security considerations to those already discussed for IPFIX in {{!RFC7011}}.
+   This document does not add new security considerations to those already
+   discussed for IPFIX in {{!RFC7011}}.
 
 --- back
 
