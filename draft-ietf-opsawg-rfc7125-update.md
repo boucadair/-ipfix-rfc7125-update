@@ -46,7 +46,7 @@ informative:
 
    RFC 7125 revised the tcpControlBits IP Flow Information Export
    (IPFIX) Information Element that was originally defined in RFC 5102
-   to reflect changes to the TCP Flags header field since RFC 793.
+   to reflect changes to the TCP header control bits since RFC 793.
    However, that update is still problematic for interoperability
    because some flag values were deprecated since then.
 
@@ -61,39 +61,41 @@ informative:
 #  Introduction
 
    TCP defines a set of control bits (also known as "flags") for
-   managing connections (Section 3.1 of {{!RFC9293}}). The "Transmission Control Protocol (TCP)
+   managing connections ({{Section 3.1 of !RFC9293}}). The "Transmission Control Protocol (TCP)
    Header Flags" registry was initially set by {{?RFC3168}}, but it was
    populated with only TCP control bits that were defined in {{?RFC3168}}.
    {{!RFC9293}} fixed that by moving that registry to be listed as a
    subregistry under the "Transmission Control Protocol (TCP)
-   Parameters" registry, adding bits that had previously been specified
+   Parameters" registry {{TCP-FLAGS}}, adding bits that had previously been specified
    in {{?RFC0793}}, and removing the NS (Nonce Sum) bit as per {{?RFC8311}}.
-   Also, Section 6 of {{!RFC9293}} introduces "Bit Offset" to ease referencing each
+   Also, {{Section 6 of !RFC9293}} introduces "Bit Offset" to ease referencing each
    header flag's offset within the 16-bit aligned view of the TCP header
    (Figure 1 of {{!RFC9293}}).  {{TCP-FLAGS}} is thus settled as the
    authoritative reference for the assigned TCP control bits.
 
    {{?RFC7125}} revised the tcpControlBits IP Flow Information Export
    (IPFIX) Information Element (IE) that was originally defined in
-   {{?RFC5102}} to reflect changes to the TCP Flags header field since
+   {{?RFC5102}} to reflect changes to the TCP control bits since
    {{?RFC0793}}.  However, that update is still problematic for
-   interoperability because a value was deprecated since then (Section 7
-   of {{?RFC8311}}) and, therefore, {{?RFC7125}} risks to deviate from the
-   authoritative TCP registry {{TCP-FLAGS}}. This update is also useful
+   interoperability because a value was deprecated since then ({{Section 7 of ?RFC8311}})
+   and, therefore, {{?RFC7125}} risks to deviate from the
+   authoritative TCP registry {{TCP-FLAGS}}.
+
+   This document fixes that problem by removing stale information from
+   the IPFIX registry {{IPFIX}} and avoiding future conflicts with the
+   authoritative TCP registry {{TCP-FLAGS}}. The update in this document is also useful
    to enhance observability. For example, network operators can identify
    when packets are being observed with unassigned TCP flags set and,
    therefore, identify which applications in the network should be upgraded
    to reflect the changes to TCP flags that were introduced, e.g., in {{?RFC8311}}.
-
-   This document fixes that problem by removing stale information from
-   the IPFIX registry {{IPFIX}} and avoiding future conflicts with the
-   authoritative TCP registry {{TCP-FLAGS}}.
 
    Also, because the setting of TCP control bits may be misused in some
    flows (e.g., Distributed Denial-of-Service (DDoS) attacks), an exporter
    has to report all observed control bits even if no meaning is associated
    with a given TCP flag. This document uses a stronger requirement language
    compared to {{?RFC7125}}.  See Section 3 for more details.
+
+   The main changes to {{?RFC7125}} are listed in {{changes}}.
 
 #  Terminology
 
@@ -161,7 +163,7 @@ Range:
 References:
 : {{!RFC9293}}[This-Document]
 
-: Additional Information:
+Additional Information:
 See the assigned TCP control bits in {{TCP-FLAGS}}.
 
 Revision:
@@ -175,11 +177,14 @@ Revision:
 
 # Security Considerations
 
-  This document does not add new security considerations to those already discussed for IPFIX in {{!RFC7011}}.
+An exporter has to report all observed control bits even if no meaning is associated
+with a given TCP flag. Misuses of TCP flags to conduct attacks can be detected by observers.
+
+This document does not add new security considerations to those already discussed for IPFIX in {{!RFC7011}}.
 
 --- back
 
-# Changes from RFC 7125
+# Changes from RFC 7125 {#changes}
 
 * Clean-up the description by removing mentions of stale flag bits, referring to the flag bits by their bit offset position, and relying upon the IANA TCP registry.
 * Remove the table of TCP flag bits from the description of the tcpControlBits Information Element.
@@ -187,7 +192,7 @@ Revision:
 * Use strong normative language for exporting observed flags.
 * Update the references of the tcpControlBits Information Element.
 * Bump the revision of the tcpControlBits Information Element.
-* Replace obsolete RFCs (e.g., RFC793).
+* Replace obsolete RFCs (e.g., {{?RFC0793}}).
 
 
 # Acknowledgments
@@ -201,7 +206,7 @@ Revision:
 
    Thanks to Michael Scharf for the tsvart review and Ketan Talaulikar for the rtgdir review.
 
-  From {{?RFC7125}}:
+  Acknowledgments from {{?RFC7125}}:
   : Thanks to Andrew Feren, Lothar Braun, Michael Scharf, and Simon
      Josefsson for comments on the revised definition.  This work is
      partially supported by the European Commission under grant agreement
