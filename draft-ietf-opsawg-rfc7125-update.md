@@ -48,10 +48,10 @@ informative:
    (IPFIX) Information Element that was originally defined in RFC 5102
    to reflect changes to the TCP header control bits since RFC 793.
    However, that update is still problematic for interoperability
-   because some flag values were deprecated since then.
+   because some flag values have subsequently been deprecated.
 
    This document removes stale information from the
-   IPFIX registry and avoiding future conflicts with the authoritative
+   IPFIX registry and avoids future conflicts with the authoritative
    TCP Header Flags registry.
 
    This document obsoletes RFC 7125.
@@ -70,8 +70,10 @@ informative:
    in {{?RFC0793}}, and removing the NS (Nonce Sum) bit as per {{?RFC8311}}.
    Also, {{Section 6 of !RFC9293}} introduces "Bit Offset" to ease referencing each
    header flag's offset within the 16-bit aligned view of the TCP header
-   (Figure 1 of {{!RFC9293}}).  {{TCP-FLAGS}} is thus settled as the
+   (Figure 1 of {{!RFC9293}}). {{TCP-FLAGS}} is thus settled as the
    authoritative reference for the assigned TCP control bits.
+
+   > The bits in offsets 0 through 3 are not header flags, but the TCP segment Data Offset field.
 
    {{?RFC7125}} revised the tcpControlBits IP Flow Information Export
    (IPFIX) Information Element (IE) that was originally defined in
@@ -150,6 +152,24 @@ Description:
   especially if these bits are zero in every Flow Record sent by a
   given exporter.
 
+: Note also that {{TCP-FLAGS}} indexes the bit offset from the most-significant
+  bit of octet 12 to the least-significant bit of octet 13 in the TCP header,
+  but the tcpControlBits is encoded as a regular unsigned 16 bit integer.
+
+  : For example, a tcpControlBits Information Element set to 0x90 is used to report TCP control bits for a segment
+  that has CWR (Congestion Window Reduced) and ACK flag bits set (that is,
+  bit offset positions 8 and 11).
+
+~~~~
+MSB                           LSB
+                     1
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0|0|0|0|0|0|0|0|1|0|0|1|0|0|0|0|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+~~~~
+{: artwork-align="center"}
+
 Units:
 
 Range:
@@ -158,7 +178,7 @@ References:
 : {{!RFC9293}}[This-Document]
 
 Additional Information:
-See the assigned TCP control bits in {{TCP-FLAGS}}.
+: See the assigned TCP control bits in {{TCP-FLAGS}}.
 
 Revision:
 : 2
@@ -203,6 +223,8 @@ Revision:
    review and comments.
 
    Thanks to Michael Scharf for the tsvart review and Ketan Talaulikar for the rtgdir review.
+
+   Thanks to Rob Wilton for the AD review.
 
   Acknowledgments from {{?RFC7125}}:
   : Thanks to Andrew Feren, Lothar Braun, Michael Scharf, and Simon
