@@ -152,8 +152,13 @@ Description:
   especially if these bits are zero in every Flow Record sent by a
   given exporter.
 
-: The following provides an example of reported TCP control bits for a segment
-  that has CWR (Congestion Window Reduced) and ACK flag bits set (that is, bit offset positions 8 and 11).
+: Note also that {{TCP-FLAGS}} indexes the bit offset from the most-significant
+  bit of octet 12 to the least-significant bit of octet 13 in the TCP header,
+  but the tcpControlBits is encoded as a regular unsigned 16 bit integer.
+
+  : For example, a tcpControlBits Information Element set to 0x90 is used to report TCP control bits for a segment
+  that has CWR (Congestion Window Reduced) and ACK flag bits set (that is,
+  bit offset positions 8 and 11).
 
 ~~~~
 MSB                           LSB
