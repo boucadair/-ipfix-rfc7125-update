@@ -73,7 +73,7 @@ informative:
    (Figure 1 of {{!RFC9293}}). {{TCP-FLAGS}} is thus settled as the
    authoritative reference for the assigned TCP control bits.
 
-   > The bits in offsets 0 through 3 are not header flags, but the TCP segment Data Offset field.
+   > Note: The bits in offsets 0 through 3 are not header flags, but the TCP segment Data Offset field.
 
    {{?RFC7125}} revised the tcpControlBits IP Flow Information Export
    (IPFIX) Information Element (IE) that was originally defined in
@@ -112,10 +112,10 @@ Data Type Semantics:
 
 Description:
 : TCP control bits observed for the packets of this Flow.
-  This information is encoded as a bit field; for each TCP control
-  bit, there is a bit in this set.  The bit is set to 1 if any
+  This information is encoded as a bit field; each TCP control
+  bit has a corresponding bit in that field. A bit is set to 1 if any
   observed packet of this Flow has the corresponding TCP control bit
-  set to 1.  The bit is cleared to 0 otherwise.
+  set to 1. The bit is cleared to 0 otherwise.
 
 : As per {{!RFC9293}}, the assignment of the TCP control bits is
   managed by IANA from the "TCP Header Flags" registry {{TCP-FLAGS}}.
@@ -225,6 +225,8 @@ Revision:
    Thanks to Michael Scharf for the tsvart review and Ketan Talaulikar for the rtgdir review.
 
    Thanks to Rob Wilton for the AD review.
+
+   Thanks for Tim Bray for the artart review.
 
   Acknowledgments from {{?RFC7125}}:
   : Thanks to Andrew Feren, Lothar Braun, Michael Scharf, and Simon
