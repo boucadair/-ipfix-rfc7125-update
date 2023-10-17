@@ -145,7 +145,7 @@ Description:
   Element.
 
 : Note that previous revisions of this Information Element's
-  definition specified that that flags with bit offset positions 8 and 9 must be exported as
+  definition specified that flags with bit offset positions 8 and 9 must be exported as
   zero, even if observed.  Collectors should therefore not assume
   that a value of zero for these bits in this Information Element
   indicates the bits were never set in the observed traffic,
@@ -156,7 +156,7 @@ Description:
   bit of octet 12 to the least-significant bit of octet 13 in the TCP header,
   but the tcpControlBits is encoded as a regular unsigned 16 bit integer.
 
-: For example, a tcpControlBits Information Element set to 0x90 is used to report TCP control bits for a segment
+: For example, a tcpControlBits Information Element set to 0x90 is used to report TCP control bits for a Flow
   that has CWR (Congestion Window Reduced) and ACK flag bits set (that is,
   bit offset positions 8 and 11).
 
