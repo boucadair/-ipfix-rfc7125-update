@@ -1,0 +1,128 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2023-03-28T00:40:03.628260+00:00",
+  "repo": "boucadair/-ipfix-rfc7125-update",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    }
+  ],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOI4fQRc5dW9p_",
+      "title": "observability (T. Graf)",
+      "url": "https://github.com/boucadair/-ipfix-rfc7125-update/issues/1",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "> Dear opsawg,\r\n> \r\n> I support the adoption and think draft-boucla-opsawg-ipfix-fixes should follow the adoption call next as well. Both are very valuable to keep the IPFIX registry up to date.\r\n> \r\n> I agree with the author that IE6 tcpControlBits should mirror the TCP header flags registry (https://www.iana.org/assignments/tcp-parameters/tcp-parameters.xhtml#tcp-header-flags). \r\n> \r\n> With this update network operators understand when packets are being observed with bit 7 set which application in the network should be upgraded to reflect the change being introduced with RFC 8311.\r\n> \r\n> I suggest in the introduction to take the angle of correct observability vs. TCP protocol interoperability to describe the motivation.\r\n> \r\n> Best wishes\r\n> Thomas\r\n",
+      "createdAt": "2023-02-01T15:15:19Z",
+      "updatedAt": "2023-02-24T13:45:10Z",
+      "closedAt": "2023-02-24T13:45:10Z",
+      "comments": []
+    }
+  ],
+  "pulls": [
+    {
+      "number": 2,
+      "id": "PR_kwDOI4fQRc5Ks7Xr",
+      "title": "observability",
+      "url": "https://github.com/boucadair/-ipfix-rfc7125-update/pull/2",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "#1",
+      "createdAt": "2023-02-24T13:41:20Z",
+      "updatedAt": "2023-02-24T13:44:55Z",
+      "baseRepository": "boucadair/-ipfix-rfc7125-update",
+      "baseRefName": "main",
+      "baseRefOid": "1c7d75a31b6400be281a6e16391499576f34dbb9",
+      "headRepository": "boucadair/-ipfix-rfc7125-update",
+      "headRefName": "boucadair-patch-1",
+      "headRefOid": "d9aacbaa6fb7a38a580043fb7d06ec9f9d46b5f0",
+      "closedAt": "2023-02-24T13:44:40Z",
+      "mergedAt": "2023-02-24T13:44:40Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "fa25e493636a239d84d52088b46d79f19685d562"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 3,
+      "id": "PR_kwDOI4fQRc5Mh3jb",
+      "title": "obsoletes-rfc7125",
+      "url": "https://github.com/boucadair/-ipfix-rfc7125-update/pull/3",
+      "state": "MERGED",
+      "author": "boucadair",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-03-21T10:17:16Z",
+      "updatedAt": "2023-03-26T15:26:34Z",
+      "baseRepository": "boucadair/-ipfix-rfc7125-update",
+      "baseRefName": "main",
+      "baseRefOid": "4f6552e852f5185857ab18d7e95f3c3e61544876",
+      "headRepository": "boucadair/-ipfix-rfc7125-update",
+      "headRefName": "obsoletes-7125",
+      "headRefOid": "f506895db1dac4cef8756113899e1a590741ab82",
+      "closedAt": "2023-03-26T15:26:33Z",
+      "mergedAt": "2023-03-26T15:26:33Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "1bc5874c6d9c27fe29e3b83ebea7069ffda0bbff"
+      },
+      "comments": [],
+      "reviews": []
+    }
+  ]
+}
