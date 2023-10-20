@@ -182,7 +182,7 @@ MSB                           LSB
 |0|0|0|0|0|0|0|0|1|0|0|1|0|0|1|0|
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ~~~~
-{: #ex Title="An Example of tcpControlBits Information Element" artwork-align="center"}
+{: #ex title="An Example of tcpControlBits Information Element" artwork-align="center"}
 
 
 #  IANA Considerations
