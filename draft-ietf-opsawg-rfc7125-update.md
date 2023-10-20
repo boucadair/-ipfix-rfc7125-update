@@ -156,20 +156,6 @@ Description:
   bit of octet 12 to the least-significant bit of octet 13 in the TCP header,
   but the tcpControlBits is encoded as a regular unsigned 16 bit integer.
 
-: For example, a tcpControlBits Information Element set to 0x90 is used to report TCP control bits for a Flow
-  that has CWR (Congestion Window Reduced) and ACK flag bits set (that is,
-  bit offset positions 8 and 11).
-
-~~~~
-MSB                           LSB
-                     1
- 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|0|0|0|0|0|0|0|0|1|0|0|1|0|0|0|0|
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-~~~~
-{: artwork-align="center"}
-
 Units:
 
 Range:
@@ -182,6 +168,21 @@ Additional Information:
 
 Revision:
 : 2
+
+# An Example
+
+{{ex}} shows an example of a tcpControlBits Information Element set to 146. This Information Element is used to report TCP control bits for a Flow
+that has CWR (Congestion Window Reduced), ACK, and SYN flag bits set (that is, bit offset positions 8, 11, and 14).
+
+~~~~
+MSB                           LSB
+                     1
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|0|0|0|0|0|0|0|0|1|0|0|1|0|0|1|0|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+~~~~
+{: #ex Title="An Example of tcpControlBits Information Element" artwork-align="center"}
 
 
 #  IANA Considerations
@@ -211,6 +212,7 @@ Revision:
 * Update the references of the tcpControlBits Information Element.
 * Bump the revision of the tcpControlBits Information Element.
 * Replace obsolete RFCs (e.g., {{?RFC0793}}).
+* Add an Example Section
 
 
 # Acknowledgments
