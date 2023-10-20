@@ -226,7 +226,7 @@ Revision:
 
    Thanks to Rob Wilton for the AD review.
 
-   Thanks for Tim Bray for the artart review.
+   Thanks for Tim Bray for the artart review and Shawn Emery for the secdir review.
 
   Acknowledgments from {{?RFC7125}}:
   : Thanks to Andrew Feren, Lothar Braun, Michael Scharf, and Simon
