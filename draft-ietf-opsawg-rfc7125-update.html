@@ -1041,7 +1041,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Boucadair</td>
-<td class="center">Expires 22 April 2024</td>
+<td class="center">Expires 28 April 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1057,12 +1057,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="https://www.rfc-editor.org/rfc/rfc7125" class="eref">7125</a> (if approved)</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2023-10-20" class="published">20 October 2023</time>
+<time datetime="2023-10-26" class="published">26 October 2023</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-04-22">22 April 2024</time></dd>
+<dd class="expires"><time datetime="2024-04-28">28 April 2024</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1115,7 +1115,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 22 April 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 28 April 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1151,7 +1151,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
-            <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-the-tcpcontrolbits-informat" class="internal xref">The tcpControlBits Information Element</a></p>
+            <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-revised-tcpcontrolbits-info" class="internal xref">Revised tcpControlBits Information Element</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-an-example" class="internal xref">An Example</a></p>
@@ -1216,7 +1216,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
    <span>[<a href="#RFC5102" class="cite xref">RFC5102</a>]</span> to reflect changes to the TCP control bits since
    <span>[<a href="#RFC0793" class="cite xref">RFC0793</a>]</span>.  However, that update is still problematic for
    interoperability because a value was deprecated since then (<span><a href="https://rfc-editor.org/rfc/rfc8311#section-7" class="relref">Section 7</a> of [<a href="#RFC8311" class="cite xref">RFC8311</a>]</span>)
-   and, therefore, <span>[<a href="#RFC7125" class="cite xref">RFC7125</a>]</span> risks to deviate from the
+   and, therefore, <span>[<a href="#RFC7125" class="cite xref">RFC7125</a>]</span> risks deviating from the
    authoritative TCP registry <span>[<a href="#TCP-FLAGS" class="cite xref">TCP-FLAGS</a>]</span>.<a href="#section-1-3" class="pilcrow">¶</a></p>
 <p id="section-1-4">This document fixes that problem by removing stale information from
    the IPFIX registry <span>[<a href="#IPFIX" class="cite xref">IPFIX</a>]</span> and avoiding future conflicts with the
@@ -1240,10 +1240,10 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <p id="section-2-2">This document uses the terms defined in Section 2 of <span>[<a href="#RFC7011" class="cite xref">RFC7011</a>]</span>.<a href="#section-2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="the-tcpcontrolbits-information-element">
+<div id="revised-tcpcontrolbits-information-element">
 <section id="section-3">
-      <h2 id="name-the-tcpcontrolbits-informat">
-<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-the-tcpcontrolbits-informat" class="section-name selfRef">The tcpControlBits Information Element</a>
+      <h2 id="name-revised-tcpcontrolbits-info">
+<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-revised-tcpcontrolbits-info" class="section-name selfRef">Revised tcpControlBits Information Element</a>
       </h2>
 <span class="break"></span><dl class="dlParallel" id="section-3-1">
         <dt id="section-3-1.1">ElementId:</dt>
@@ -1284,7 +1284,7 @@ control bits.<a href="#section-3-1.10.1" class="pilcrow">¶</a></p>
 zero) of the TCP header <span>[<a href="#RFC9293" class="cite xref">RFC9293</a>]</span> are used to encode the TCP data
 offset (header length), the corresponding bits in this Information
 Element <span class="bcp14">MUST</span> be exported with a value of zero and <span class="bcp14">MUST</span> be ignored
-by the collector. Use the tcpHeaderLength Information Element to
+by the Collector. Use the tcpHeaderLength Information Element to
 encode this value.<a href="#section-3-1.12.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
@@ -1298,7 +1298,7 @@ as observed in the TCP headers of the packets of this Flow.<a href="#section-3-1
         <dd style="margin-left: 1.5em" id="section-3-1.16">
           <p id="section-3-1.16.1">If exported as a single octet with reduced-size encoding, this
 Information Element covers the low-order octet of this field (i.e.,
-bit offset positions 8 to 15) <span>[<a href="#TCP-FLAGS" class="cite xref">TCP-FLAGS</a>]</span>. A collector receiving this Information Element
+bit offset positions 8 to 15) <span>[<a href="#TCP-FLAGS" class="cite xref">TCP-FLAGS</a>]</span>. A Collector receiving this Information Element
 with reduced-size encoding must not assume anything about the
 content of the four bits with bit offset positions 4 to 7.<a href="#section-3-1.16.1" class="pilcrow">¶</a></p>
 </dd>
@@ -1394,7 +1394,7 @@ MSB                           LSB
 <p id="section-6-1">Because the setting of TCP control bits may be misused in some
    flows (e.g., Distributed Denial-of-Service (DDoS) attacks), an exporter
    has to report all observed control bits even if no meaning is associated
-   with a given TCP flag. This document uses a stronger requirement language
+   with a given TCP flag. This document uses a stronger requirements language
    compared to <span>[<a href="#RFC7125" class="cite xref">RFC7125</a>]</span>.<a href="#section-6-1" class="pilcrow">¶</a></p>
 <p id="section-6-2">This document does not add new security considerations to those already
    discussed for IPFIX in <span>[<a href="#RFC7011" class="cite xref">RFC7011</a>]</span>.<a href="#section-6-2" class="pilcrow">¶</a></p>

@@ -4,9 +4,9 @@
 
 OPSAWG                                                      M. Boucadair
 Internet-Draft                                                    Orange
-Obsoletes: 7125 (if approved)                            20 October 2023
+Obsoletes: 7125 (if approved)                            26 October 2023
 Intended status: Standards Track                                        
-Expires: 22 April 2024
+Expires: 28 April 2024
 
 
    An Update to the tcpControlBits IP Flow Information Export (IPFIX)
@@ -54,7 +54,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 April 2024.
+   This Internet-Draft will expire on 28 April 2024.
 
 Copyright Notice
 
@@ -74,7 +74,7 @@ Table of Contents
 
    1.  Introduction
    2.  Terminology
-   3.  The tcpControlBits Information Element
+   3.  Revised tcpControlBits Information Element
    4.  An Example
    5.  IANA Considerations
    6.  Security Considerations
@@ -110,7 +110,7 @@ Table of Contents
    [RFC5102] to reflect changes to the TCP control bits since [RFC0793].
    However, that update is still problematic for interoperability
    because a value was deprecated since then (Section 7 of [RFC8311])
-   and, therefore, [RFC7125] risks to deviate from the authoritative TCP
+   and, therefore, [RFC7125] risks deviating from the authoritative TCP
    registry [TCP-FLAGS].
 
    This document fixes that problem by removing stale information from
@@ -134,7 +134,7 @@ Table of Contents
 
    This document uses the terms defined in Section 2 of [RFC7011].
 
-3.  The tcpControlBits Information Element
+3.  Revised tcpControlBits Information Element
 
    ElementId:  6
 
@@ -157,7 +157,7 @@ Table of Contents
       zero) of the TCP header [RFC9293] are used to encode the TCP data
       offset (header length), the corresponding bits in this Information
       Element MUST be exported with a value of zero and MUST be ignored
-      by the collector.  Use the tcpHeaderLength Information Element to
+      by the Collector.  Use the tcpHeaderLength Information Element to
       encode this value.
 
       All TCP control bits (including those unassigned) MUST be exported
@@ -165,7 +165,7 @@ Table of Contents
 
       If exported as a single octet with reduced-size encoding, this
       Information Element covers the low-order octet of this field
-      (i.e., bit offset positions 8 to 15) [TCP-FLAGS].  A collector
+      (i.e., bit offset positions 8 to 15) [TCP-FLAGS].  A Collector
       receiving this Information Element with reduced-size encoding must
       not assume anything about the content of the four bits with bit
       offset positions 4 to 7.
@@ -226,7 +226,7 @@ Table of Contents
    Because the setting of TCP control bits may be misused in some flows
    (e.g., Distributed Denial-of-Service (DDoS) attacks), an exporter has
    to report all observed control bits even if no meaning is associated
-   with a given TCP flag.  This document uses a stronger requirement
+   with a given TCP flag.  This document uses a stronger requirements
    language compared to [RFC7125].
 
    This document does not add new security considerations to those
