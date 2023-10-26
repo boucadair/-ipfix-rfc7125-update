@@ -80,7 +80,7 @@ informative:
    {{?RFC5102}} to reflect changes to the TCP control bits since
    {{?RFC0793}}.  However, that update is still problematic for
    interoperability because a value was deprecated since then ({{Section 7 of ?RFC8311}})
-   and, therefore, {{?RFC7125}} risks to deviate from the
+   and, therefore, {{?RFC7125}} risks deviating from the
    authoritative TCP registry {{TCP-FLAGS}}.
 
    This document fixes that problem by removing stale information from
@@ -99,7 +99,7 @@ informative:
 
    This document uses the terms defined in Section 2 of {{!RFC7011}}.
 
-#  The tcpControlBits Information Element
+#  Revised tcpControlBits Information Element
 
 ElementId:
 : 6
@@ -126,7 +126,7 @@ Description:
   zero) of the TCP header {{!RFC9293}} are used to encode the TCP data
   offset (header length), the corresponding bits in this Information
   Element MUST be exported with a value of zero and MUST be ignored
-  by the collector. Use the tcpHeaderLength Information Element to
+  by the Collector. Use the tcpHeaderLength Information Element to
   encode this value.
 
 : All TCP control bits (including those unassigned) MUST be exported
@@ -134,7 +134,7 @@ Description:
 
 : If exported as a single octet with reduced-size encoding, this
   Information Element covers the low-order octet of this field (i.e.,
-  bit offset positions 8 to 15) {{TCP-FLAGS}}. A collector receiving this Information Element
+  bit offset positions 8 to 15) {{TCP-FLAGS}}. A Collector receiving this Information Element
   with reduced-size encoding must not assume anything about the
   content of the four bits with bit offset positions 4 to 7.
 
@@ -195,7 +195,7 @@ MSB                           LSB
    Because the setting of TCP control bits may be misused in some
    flows (e.g., Distributed Denial-of-Service (DDoS) attacks), an exporter
    has to report all observed control bits even if no meaning is associated
-   with a given TCP flag. This document uses a stronger requirement language
+   with a given TCP flag. This document uses a stronger requirements language
    compared to {{?RFC7125}}.
 
    This document does not add new security considerations to those already
