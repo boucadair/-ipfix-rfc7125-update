@@ -224,7 +224,8 @@ MSB                           LSB
    Thanks to Christian Jacquenet, Thomas Graf, and Benoît Claise for the
    review and comments.
 
-   Thanks to Michael Scharf for the tsvart review and Ketan Talaulikar for the rtgdir review.
+   Thanks to Michael Scharf for the tsvart review, Ketan Talaulikar for the rtgdir review,
+   and Elwyn Davies for the genart review.
 
    Thanks to Rob Wilton for the AD review.
 
