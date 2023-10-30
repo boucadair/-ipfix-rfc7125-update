@@ -4,9 +4,9 @@
 
 OPSAWG                                                      M. Boucadair
 Internet-Draft                                                    Orange
-Obsoletes: 7125 (if approved)                            26 October 2023
+Obsoletes: 7125 (if approved)                            30 October 2023
 Intended status: Standards Track                                        
-Expires: 28 April 2024
+Expires: 2 May 2024
 
 
    An Update to the tcpControlBits IP Flow Information Export (IPFIX)
@@ -54,7 +54,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 28 April 2024.
+   This Internet-Draft will expire on 2 May 2024.
 
 Copyright Notice
 
@@ -327,8 +327,8 @@ Acknowledgments
    Thanks to Christian Jacquenet, Thomas Graf, and Benoît Claise for the
    review and comments.
 
-   Thanks to Michael Scharf for the tsvart review and Ketan Talaulikar
-   for the rtgdir review.
+   Thanks to Michael Scharf for the tsvart review, Ketan Talaulikar for
+   the rtgdir review, and Elwyn Davies for the genart review.
 
    Thanks to Rob Wilton for the AD review.
 
