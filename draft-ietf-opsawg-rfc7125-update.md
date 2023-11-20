@@ -125,7 +125,7 @@ Description:
 : As the most significant 4 bits of octets 12 and 13 (counting from
   zero) of the TCP header {{!RFC9293}} are used to encode the TCP data
   offset (header length), the corresponding bits in this Information
-  Element MUST be exported with a value of zero and MUST be ignored
+  Element MUST be reported by the Exporter with a value of zero and MUST be ignored
   by the Collector. Use the tcpHeaderLength Information Element to
   encode this value.
 
@@ -150,7 +150,7 @@ Description:
   that a value of zero for these bits in this Information Element
   indicates the bits were never set in the observed traffic,
   especially if these bits are zero in every Flow Record sent by a
-  given exporter.
+  given Exporter.
 
 : Note also that {{TCP-FLAGS}} indexes the bit offset from the most-significant
   bit of octet 12 to the least-significant bit of octet 13 in the TCP header,
@@ -193,7 +193,7 @@ MSB                           LSB
 # Security Considerations
 
    Because the setting of TCP control bits may be misused in some
-   flows (e.g., Distributed Denial-of-Service (DDoS) attacks), an exporter
+   flows (e.g., Distributed Denial-of-Service (DDoS) attacks), an Exporter
    has to report all observed control bits even if no meaning is associated
    with a given TCP flag. This document uses a stronger requirements language
    compared to {{?RFC7125}}.
@@ -230,6 +230,8 @@ MSB                           LSB
    Thanks to Rob Wilton for the AD review.
 
    Thanks for Tim Bray for the artart review and Shawn Emery for the secdir review.
+
+   Thanks to Éric Vyncke for the IESG review.
 
   Acknowledgments from {{?RFC7125}}:
   : Thanks to Andrew Feren, Lothar Braun, Michael Scharf, and Simon
