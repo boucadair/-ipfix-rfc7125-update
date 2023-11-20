@@ -4,9 +4,9 @@
 
 OPSAWG                                                      M. Boucadair
 Internet-Draft                                                    Orange
-Obsoletes: 7125 (if approved)                            17 October 2023
+Obsoletes: 7125 (if approved)                           20 November 2023
 Intended status: Standards Track                                        
-Expires: 19 April 2024
+Expires: 23 May 2024
 
 
    An Update to the tcpControlBits IP Flow Information Export (IPFIX)
@@ -54,7 +54,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 April 2024.
+   This Internet-Draft will expire on 23 May 2024.
 
 Copyright Notice
 
@@ -74,12 +74,13 @@ Table of Contents
 
    1.  Introduction
    2.  Terminology
-   3.  The tcpControlBits Information Element
-   4.  IANA Considerations
-   5.  Security Considerations
-   6.  References
-     6.1.  Normative References
-     6.2.  Informative References
+   3.  Revised tcpControlBits Information Element
+   4.  An Example
+   5.  IANA Considerations
+   6.  Security Considerations
+   7.  References
+     7.1.  Normative References
+     7.2.  Informative References
    Appendix A.  Changes from RFC 7125
    Acknowledgments
    Contributors
@@ -109,7 +110,7 @@ Table of Contents
    [RFC5102] to reflect changes to the TCP control bits since [RFC0793].
    However, that update is still problematic for interoperability
    because a value was deprecated since then (Section 7 of [RFC8311])
-   and, therefore, [RFC7125] risks to deviate from the authoritative TCP
+   and, therefore, [RFC7125] risks deviating from the authoritative TCP
    registry [TCP-FLAGS].
 
    This document fixes that problem by removing stale information from
@@ -133,7 +134,7 @@ Table of Contents
 
    This document uses the terms defined in Section 2 of [RFC7011].
 
-3.  The tcpControlBits Information Element
+3.  Revised tcpControlBits Information Element
 
    ElementId:  6
 
@@ -155,16 +156,16 @@ Table of Contents
       As the most significant 4 bits of octets 12 and 13 (counting from
       zero) of the TCP header [RFC9293] are used to encode the TCP data
       offset (header length), the corresponding bits in this Information
-      Element MUST be exported with a value of zero and MUST be ignored
-      by the collector.  Use the tcpHeaderLength Information Element to
-      encode this value.
+      Element MUST be reported by the Exporter with a value of zero and
+      MUST be ignored by the Collector.  Use the tcpHeaderLength
+      Information Element to encode this value.
 
       All TCP control bits (including those unassigned) MUST be exported
       as observed in the TCP headers of the packets of this Flow.
 
       If exported as a single octet with reduced-size encoding, this
       Information Element covers the low-order octet of this field
-      (i.e., bit offset positions 8 to 15) [TCP-FLAGS].  A collector
+      (i.e., bit offset positions 8 to 15) [TCP-FLAGS].  A Collector
       receiving this Information Element with reduced-size encoding must
       not assume anything about the content of the four bits with bit
       offset positions 4 to 7.
@@ -176,29 +177,17 @@ Table of Contents
       Information Element.
 
       Note that previous revisions of this Information Element's
-      definition specified that that flags with bit offset positions 8
-      and 9 must be exported as zero, even if observed.  Collectors
-      should therefore not assume that a value of zero for these bits in
-      this Information Element indicates the bits were never set in the
+      definition specified that flags with bit offset positions 8 and 9
+      must be exported as zero, even if observed.  Collectors should
+      therefore not assume that a value of zero for these bits in this
+      Information Element indicates the bits were never set in the
       observed traffic, especially if these bits are zero in every Flow
-      Record sent by a given exporter.
+      Record sent by a given Exporter.
 
       Note also that [TCP-FLAGS] indexes the bit offset from the most-
       significant bit of octet 12 to the least-significant bit of octet
       13 in the TCP header, but the tcpControlBits is encoded as a
       regular unsigned 16 bit integer.
-
-      For example, a tcpControlBits Information Element set to 0x90 is
-      used to report TCP control bits for a segment that has CWR
-      (Congestion Window Reduced) and ACK flag bits set (that is, bit
-      offset positions 8 and 11).
-
-                     MSB                           LSB
-                                          1
-                      0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5
-                     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-                     |0|0|0|0|0|0|0|0|1|0|0|1|0|0|0|0|
-                     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
    Units:
 
@@ -211,25 +200,41 @@ Table of Contents
 
    Revision:  2
 
-4.  IANA Considerations
+4.  An Example
+
+   Figure 1 shows an example of a tcpControlBits Information Element set
+   to 146.  This Information Element is used to report TCP control bits
+   for a Flow that has CWR (Congestion Window Reduced), ACK, and SYN
+   flag bits set (that is, bit offset positions 8, 11, and 14).
+
+                     MSB                           LSB
+                                          1
+                      0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5
+                     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+                     |0|0|0|0|0|0|0|0|1|0|0|1|0|0|1|0|
+                     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+         Figure 1: An Example of tcpControlBits Information Element
+
+5.  IANA Considerations
 
    IANA is requested to update the "tcpControlBits" entry of the [IPFIX]
    to echo the details provided in Section 3.
 
-5.  Security Considerations
+6.  Security Considerations
 
    Because the setting of TCP control bits may be misused in some flows
-   (e.g., Distributed Denial-of-Service (DDoS) attacks), an exporter has
+   (e.g., Distributed Denial-of-Service (DDoS) attacks), an Exporter has
    to report all observed control bits even if no meaning is associated
-   with a given TCP flag.  This document uses a stronger requirement
+   with a given TCP flag.  This document uses a stronger requirements
    language compared to [RFC7125].
 
    This document does not add new security considerations to those
    already discussed for IPFIX in [RFC7011].
 
-6.  References
+7.  References
 
-6.1.  Normative References
+7.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -255,7 +260,7 @@ Table of Contents
               <https://www.iana.org/assignments/tcp-parameters/tcp-
               parameters.xhtml#tcp-header-flags>.
 
-6.2.  Informative References
+7.2.  Informative References
 
    [I-D.ietf-opsawg-ipfix-srv6-srh]
               Graf, T., Claise, B., and P. Francois, "Export of Segment
@@ -312,6 +317,8 @@ Appendix A.  Changes from RFC 7125
 
    *  Replace obsolete RFCs (e.g., [RFC0793]).
 
+   *  Add an Example Section
+
 Acknowledgments
 
    This document was triggered by a discussion of the author in opsawg
@@ -320,12 +327,15 @@ Acknowledgments
    Thanks to Christian Jacquenet, Thomas Graf, and Benoît Claise for the
    review and comments.
 
-   Thanks to Michael Scharf for the tsvart review and Ketan Talaulikar
-   for the rtgdir review.
+   Thanks to Michael Scharf for the tsvart review, Ketan Talaulikar for
+   the rtgdir review, and Elwyn Davies for the genart review.
 
    Thanks to Rob Wilton for the AD review.
 
-   Thanks for Tim Bray for the artart review.
+   Thanks for Tim Bray for the artart review and Shawn Emery for the
+   secdir review.
+
+   Thanks to Éric Vyncke for the IESG review.
 
    Acknowledgments from [RFC7125]:  Thanks to Andrew Feren, Lothar
       Braun, Michael Scharf, and Simon Josefsson for comments on the
