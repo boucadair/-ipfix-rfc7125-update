@@ -163,12 +163,12 @@ Table of Contents
       All TCP control bits (including those unassigned) MUST be exported
       as observed in the TCP headers of the packets of this Flow.
 
-      If exported as a single octet with reduced-size encoding, this
-      Information Element covers the low-order octet of this field
-      (i.e., bit offset positions 8 to 15) [TCP-FLAGS].  A Collector
-      receiving this Information Element with reduced-size encoding must
-      not assume anything about the content of the four bits with bit
-      offset positions 4 to 7.
+      If exported as a single octet with reduced-size encoding
+      (Section 6.2 of [RFC7011]), this Information Element covers the
+      low-order octet of this field (i.e., bit offset positions 8 to 15)
+      [TCP-FLAGS].  A Collector receiving this Information Element with
+      reduced-size encoding must not assume anything about the content
+      of the four bits with bit offset positions 4 to 7.
 
       Exporting Processes exporting this Information Element on behalf
       of a Metering Process that is not capable of observing any of the
@@ -271,7 +271,7 @@ Table of Contents
               ipfix-srv6-srh-14>.
 
    [IPFIX]    IANA, "IP Flow Information Export (IPFIX) Entities", n.d.,
-              <<https://www.iana.org/assignments/ipfix/ipfix.xhtml>.
+              <https://www.iana.org/assignments/ipfix/ipfix.xhtml>.
 
    [RFC0793]  Postel, J., "Transmission Control Protocol", RFC 793,
               DOI 10.17487/RFC0793, September 1981,
@@ -335,7 +335,7 @@ Acknowledgments
    Thanks for Tim Bray for the artart review and Shawn Emery for the
    secdir review.
 
-   Thanks to Éric Vyncke for the IESG review.
+   Thanks to Éric Vyncke and Paul Wouters for the IESG review.
 
    Acknowledgments from [RFC7125]:  Thanks to Andrew Feren, Lothar
       Braun, Michael Scharf, and Simon Josefsson for comments on the
