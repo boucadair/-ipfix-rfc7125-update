@@ -262,14 +262,6 @@ Table of Contents
 
 7.2.  Informative References
 
-   [I-D.ietf-opsawg-ipfix-srv6-srh]
-              Graf, T., Claise, B., and P. Francois, "Export of Segment
-              Routing over IPv6 Information in IP Flow Information
-              Export (IPFIX)", Work in Progress, Internet-Draft, draft-
-              ietf-opsawg-ipfix-srv6-srh-14, 25 May 2023,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-
-              ipfix-srv6-srh-14>.
-
    [IPFIX]    IANA, "IP Flow Information Export (IPFIX) Entities", n.d.,
               <https://www.iana.org/assignments/ipfix/ipfix.xhtml>.
 
@@ -297,6 +289,11 @@ Table of Contents
               DOI 10.17487/RFC8311, January 2018,
               <https://www.rfc-editor.org/rfc/rfc8311>.
 
+   [RFC9487]  Graf, T., Claise, B., and P. Francois, "Export of Segment
+              Routing over IPv6 Information in IP Flow Information
+              Export (IPFIX)", RFC 9487, DOI 10.17487/RFC9487, November
+              2023, <https://www.rfc-editor.org/rfc/rfc9487>.
+
 Appendix A.  Changes from RFC 7125
 
    *  Clean-up the description by removing mentions of stale flag bits,
@@ -322,7 +319,7 @@ Appendix A.  Changes from RFC 7125
 Acknowledgments
 
    This document was triggered by a discussion of the author in opsawg
-   with the authors of [I-D.ietf-opsawg-ipfix-srv6-srh].
+   with the authors of [RFC9487].
 
    Thanks to Christian Jacquenet, Thomas Graf, and Benoît Claise for the
    review and comments.
