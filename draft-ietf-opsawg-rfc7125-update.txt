@@ -4,9 +4,9 @@
 
 OPSAWG                                                      M. Boucadair
 Internet-Draft                                                    Orange
-Obsoletes: 7125 (if approved)                            30 October 2023
+Obsoletes: 7125 (if approved)                           28 November 2023
 Intended status: Standards Track                                        
-Expires: 2 May 2024
+Expires: 31 May 2024
 
 
    An Update to the tcpControlBits IP Flow Information Export (IPFIX)
@@ -54,7 +54,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 2 May 2024.
+   This Internet-Draft will expire on 31 May 2024.
 
 Copyright Notice
 
@@ -156,9 +156,9 @@ Table of Contents
       As the most significant 4 bits of octets 12 and 13 (counting from
       zero) of the TCP header [RFC9293] are used to encode the TCP data
       offset (header length), the corresponding bits in this Information
-      Element MUST be exported with a value of zero and MUST be ignored
-      by the Collector.  Use the tcpHeaderLength Information Element to
-      encode this value.
+      Element MUST be reported by the Exporter with a value of zero and
+      MUST be ignored by the Collector.  Use the tcpHeaderLength
+      Information Element to encode this value.
 
       All TCP control bits (including those unassigned) MUST be exported
       as observed in the TCP headers of the packets of this Flow.
@@ -182,7 +182,7 @@ Table of Contents
       therefore not assume that a value of zero for these bits in this
       Information Element indicates the bits were never set in the
       observed traffic, especially if these bits are zero in every Flow
-      Record sent by a given exporter.
+      Record sent by a given Exporter.
 
       Note also that [TCP-FLAGS] indexes the bit offset from the most-
       significant bit of octet 12 to the least-significant bit of octet
@@ -224,7 +224,7 @@ Table of Contents
 6.  Security Considerations
 
    Because the setting of TCP control bits may be misused in some flows
-   (e.g., Distributed Denial-of-Service (DDoS) attacks), an exporter has
+   (e.g., Distributed Denial-of-Service (DDoS) attacks), an Exporter has
    to report all observed control bits even if no meaning is associated
    with a given TCP flag.  This document uses a stronger requirements
    language compared to [RFC7125].
@@ -334,6 +334,8 @@ Acknowledgments
 
    Thanks for Tim Bray for the artart review and Shawn Emery for the
    secdir review.
+
+   Thanks to Éric Vyncke for the IESG review.
 
    Acknowledgments from [RFC7125]:  Thanks to Andrew Feren, Lothar
       Braun, Michael Scharf, and Simon Josefsson for comments on the
