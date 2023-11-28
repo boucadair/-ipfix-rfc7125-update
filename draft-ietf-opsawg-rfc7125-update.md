@@ -40,7 +40,7 @@ informative:
     title: IP Flow Information Export (IPFIX) Entities
     author:
       org: IANA
-    target: <https://www.iana.org/assignments/ipfix/ipfix.xhtml
+    target: https://www.iana.org/assignments/ipfix/ipfix.xhtml
 
 --- abstract
 
@@ -132,7 +132,7 @@ Description:
 : All TCP control bits (including those unassigned) MUST be exported
   as observed in the TCP headers of the packets of this Flow.
 
-: If exported as a single octet with reduced-size encoding, this
+: If exported as a single octet with reduced-size encoding ({{Section 6.2 of !RFC7011}}), this
   Information Element covers the low-order octet of this field (i.e.,
   bit offset positions 8 to 15) {{TCP-FLAGS}}. A Collector receiving this Information Element
   with reduced-size encoding must not assume anything about the
@@ -231,7 +231,8 @@ MSB                           LSB
 
    Thanks for Tim Bray for the artart review and Shawn Emery for the secdir review.
 
-   Thanks to Éric Vyncke for the IESG review.
+   Thanks to Éric Vyncke and Paul Wouters for the IESG review.
+
 
   Acknowledgments from {{?RFC7125}}:
   : Thanks to Andrew Feren, Lothar Braun, Michael Scharf, and Simon
