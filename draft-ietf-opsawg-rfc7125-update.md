@@ -219,7 +219,7 @@ MSB                           LSB
 {:numbered="false"}
 
    This document was triggered by a discussion of the author in opsawg with the
-   authors of {{?I-D.ietf-opsawg-ipfix-srv6-srh}}.
+   authors of {{?RFC9487}}.
 
    Thanks to Christian Jacquenet, Thomas Graf, and Benoît Claise for the
    review and comments.
