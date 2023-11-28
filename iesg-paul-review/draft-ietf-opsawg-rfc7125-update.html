@@ -1283,7 +1283,7 @@ control bits.<a href="#section-3-1.10.1" class="pilcrow">¶</a></p>
           <p id="section-3-1.12.1">As the most significant 4 bits of octets 12 and 13 (counting from
 zero) of the TCP header <span>[<a href="#RFC9293" class="cite xref">RFC9293</a>]</span> are used to encode the TCP data
 offset (header length), the corresponding bits in this Information
-Element <span class="bcp14">MUST</span> be exported with a value of zero and <span class="bcp14">MUST</span> be ignored
+Element <span class="bcp14">MUST</span> be reported by the Exporter with a value of zero and <span class="bcp14">MUST</span> be ignored
 by the Collector. Use the tcpHeaderLength Information Element to
 encode this value.<a href="#section-3-1.12.1" class="pilcrow">¶</a></p>
 </dd>
@@ -1320,7 +1320,7 @@ zero, even if observed.  Collectors should therefore not assume
 that a value of zero for these bits in this Information Element
 indicates the bits were never set in the observed traffic,
 especially if these bits are zero in every Flow Record sent by a
-given exporter.<a href="#section-3-1.20.1" class="pilcrow">¶</a></p>
+given Exporter.<a href="#section-3-1.20.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 <dt id="section-3-1.21"></dt>
@@ -1392,7 +1392,7 @@ MSB                           LSB
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
 <p id="section-6-1">Because the setting of TCP control bits may be misused in some
-   flows (e.g., Distributed Denial-of-Service (DDoS) attacks), an exporter
+   flows (e.g., Distributed Denial-of-Service (DDoS) attacks), an Exporter
    has to report all observed control bits even if no meaning is associated
    with a given TCP flag. This document uses a stronger requirements language
    compared to <span>[<a href="#RFC7125" class="cite xref">RFC7125</a>]</span>.<a href="#section-6-1" class="pilcrow">¶</a></p>
@@ -1517,7 +1517,7 @@ MSB                           LSB
    and Elwyn Davies for the genart review.<a href="#appendix-B-3" class="pilcrow">¶</a></p>
 <p id="appendix-B-4">Thanks to Rob Wilton for the AD review.<a href="#appendix-B-4" class="pilcrow">¶</a></p>
 <p id="appendix-B-5">Thanks for Tim Bray for the artart review and Shawn Emery for the secdir review.<a href="#appendix-B-5" class="pilcrow">¶</a></p>
-<p id="appendix-B-6">Thanks Paul Wouters for the IESG review.<a href="#appendix-B-6" class="pilcrow">¶</a></p>
+<p id="appendix-B-6">Thanks to Éric Vyncke and Paul Wouters for the IESG review.<a href="#appendix-B-6" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="appendix-B-7">
         <dt id="appendix-B-7.1">Acknowledgments from <span>[<a href="#RFC7125" class="cite xref">RFC7125</a>]</span>:</dt>
         <dd style="margin-left: 1.5em" id="appendix-B-7.2">
