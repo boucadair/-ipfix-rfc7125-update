@@ -231,7 +231,7 @@ MSB                           LSB
 
    Thanks for Tim Bray for the artart review and Shawn Emery for the secdir review.
 
-   Thanks to Éric Vyncke and Paul Wouters for the IESG review.
+   Thanks to Éric Vyncke and Paul Wouters for the comments in the IESG review.
 
 
   Acknowledgments from {{?RFC7125}}:
